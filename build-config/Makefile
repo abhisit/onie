@@ -510,6 +510,14 @@ ifeq ($(TCPDUMP_ENABLE),yes)
   include make/tcpdump.make
 endif
 
+ifeq ($(LIBEVENT_ENABLE),yes)
+  include make/libevent.make
+endif
+
+ifeq ($(TMUX_ENABLE),yes)
+  include make/tmux.make
+endif
+
 include make/images.make
 include make/demo.make
 

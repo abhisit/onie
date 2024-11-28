@@ -130,6 +130,14 @@ ifeq ($(TCPDUMP_ENABLE),yes)
   PACKAGES_INSTALL_STAMPS += $(TCPDUMP_STAMP)
 endif
 
+ifeq ($(LIBEVENT_ENABLE),yes)
+  PACKAGES_INSTALL_STAMPS += $(LIBEVENT_STAMP)
+endif
+
+ifeq ($(TMUX_ENABLE),yes)
+  PACKAGES_INSTALL_STAMPS += $(TMUX_STAMP)
+endif
+
 ifndef MAKE_CLEAN
 SYSROOT_NEW_FILES = $(shell \
 			test -d $(ROOTCONFDIR)/default && \
