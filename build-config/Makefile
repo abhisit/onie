@@ -518,6 +518,10 @@ ifeq ($(TMUX_ENABLE),yes)
   include make/tmux.make
 endif
 
+ifeq ($(NCURSES_ENABLE),yes)
+  include make/ncurses.make
+endif
+
 include make/images.make
 include make/demo.make
 
