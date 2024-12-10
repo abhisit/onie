@@ -69,8 +69,8 @@ $(FWUPD_BUILD_STAMP): $(FWUPD_PATCH_STAMP) $(FWUPD_NEW_FILES) | $(DEV_SYSROOT_IN
 	$(Q) rm -f $@ && eval $(PROFILE_STAMP)
 	$(Q) echo "====  Building fwupd-$(FWUPD_VERSION) ===="
 	$(Q) PATH='$(CROSSBIN):$(PATH)' && cd $(FWUPD_DIR) && \
-		source ./contrib/setup
-#	$(Q) touch $@
+		printf "N\n" | source ./contrib/setup
+	$(Q) touch $@
 
 fwupd-install: $(FWUPD_INSTALL_STAMP)
 $(FWUPD_INSTALL_STAMP): $(SYSROOT_INIT_STAMP) $(FWUPD_BUILD_STAMP)
