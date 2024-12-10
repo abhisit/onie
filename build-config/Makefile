@@ -388,6 +388,7 @@ include make/lzo.make
 include make/util-linux.make
 include make/tree.make
 include make/rsync.make
+include make/fwupd.make
 ifeq ($(MTDUTILS_ENABLE),yes)
   include make/mtdutils.make
 endif
