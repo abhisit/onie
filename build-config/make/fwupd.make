@@ -19,7 +19,6 @@ FWUPD_DIR		= $(FWUPD_BUILD_DIR)/fwupd-$(FWUPD_VERSION)
 FWUPD_SRCPATCHDIR	= $(PATCHDIR)/fwupd
 FWUPD_DOWNLOAD_STAMP	= $(DOWNLOADDIR)/fwupd-download
 FWUPD_SOURCE_STAMP	= $(USER_STAMPDIR)/fwupd-source
-FWUPD_PATCH_STAMP	= $(USER_STAMPDIR)/fwupd-patch
 FWUPD_BUILD_STAMP	= $(USER_STAMPDIR)/fwupd-build
 FWUPD_INSTALL_STAMP	= $(STAMPDIR)/fwupd-install
 FWUPD_STAMP		= $(FWUPD_DOWNLOAD_STAMP) \
@@ -31,7 +30,6 @@ FWUPD_STAMP		= $(FWUPD_DOWNLOAD_STAMP) \
 PHONY += fwupd \
 	 fwupd-download \
 	 fwupd-source \
-	 fwupd-patch \
 	 fwupd-build \
 	 fwupd-install \
 	 fwupd-clean \
@@ -56,13 +54,6 @@ $(FWUPD_SOURCE_STAMP): $(USER_FWUPD_STAMP) | $(FWUPD_DOWNLOAD_STAMP)
 	$(Q) rm -f $@ && eval $(PROFILE_STAMP)
 	$(Q) echo "==== Extracting upstream fwupd ===="
 	$(Q) $(SCRIPTDIR)/extract-package $(FWUPD_BUILD_DIR) $(DOWNLOADDIR)/$(FWUPD_TARBALL)
-	$(Q) touch $@
-
-fwupd-patch: $(FWUPD_PATCH_STAMP)
-$(FWUPD_PATCH_STAMP): $(FWUPD_SRCPATCHDIR)/* $(FWUPD_SOURCE_STAMP)
-	$(Q) rm -f $@ && eval $(PROFILE_STAMP)
-	$(Q) echo "==== Patching fwupd ===="
-	$(Q) $(SCRIPTDIR)/apply-patch-series $(FWUPD_SRCPATCHDIR)/series $(FWUPD_DIR)
 	$(Q) touch $@
 
 ifndef MAKE_CLEAN
