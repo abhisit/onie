@@ -19,6 +19,7 @@ Follow the instruction to identify your device's ONIE platform in order to insta
 | Platform name                        | Machine rev. | Label rev. | Build ONIE option |
 |:------------------------------------:|:------------:|:----------:|:-----------------:|
 | x86_64-alphanetworks_snk60i0_320f-r0 |  `r0`        | N/A        | VENDOR_REV=0      |
+| x86_64-alphanetworks_snk60i0_320f-r1 |  `r1`        | N/A        | VENDOR_REV=1      |
 
 > **Label rev**. is N/A which means there is no label revision for this device.
 
@@ -33,11 +34,11 @@ make -j4 MACHINEROOT=../machine/<vendor> MACHINE=<vendor>_<model> VENDOR_REV=<ve
 * \<model>: Model name.
 * \<vendor_rev>: Hardware machine revision. The default value is the latest hardware machine revision, you can specify the value to override it.
 
-For example, to build ONIE platform **x86_64-alphanetworks_snk60i0_320f-r0** for Alpha Networks SNK-60I0-320F machine revision `r0`:
+For example, to build ONIE platform **x86_64-alphanetworks_snk60i0_320f-r1** for Alpha Networks SNK-60I0-320F machine revision `r1`:
 
 ```
 $ cd build-config
-$ make -j4 MACHINEROOT=../machine/alphanetworks MACHINE=alphanetworks_snk60i0_320f VENDOR_REV=0 all pxe-efi64
+$ make -j4 MACHINEROOT=../machine/alphanetworks MACHINE=alphanetworks_snk60i0_320f VENDOR_REV=1 all pxe-efi64
 ```
 
 For more information, please refer to [onie/machine/alphanetworks/alphanetworks_snk60i0_320f/INSTALL](https://github.com/opencomputeproject/onie/blob/master/machine/alphanetworks/alphanetworks_snk60i0_320f/INSTALL)
@@ -45,7 +46,7 @@ For more information, please refer to [onie/machine/alphanetworks/alphanetworks_
 ## Modification history
 Alpha Networks uses vendor version to record Alpha Networks own ONIE software history. ONIE master branch always build the latest version ONIE images, and there is no option to build the previous version ONIE images.
 
-| Date       | Vendor version | Description                                  |
-|:----------:|:--------------:|:---------------------------------------------|
-| 2025/02/13 | .alpha-0.1     | Support SNK-60I0-320F machine revision `r0`. |
-
+| Date       | Vendor version | Description                                           |
+|:----------:|:--------------:|:------------------------------------------------------|
+| 2025/02/13 | .alpha-0.1     | Support SNK-60I0-320F machine revision `r0`.          |
+| 2025/08/14 | .alpha-0.2     | Support SNK-60I0-320F machine revision `r0` and `r1`. |
